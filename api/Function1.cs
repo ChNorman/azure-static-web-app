@@ -19,10 +19,7 @@ namespace Proxy
             ILogger log)
         {
             var response = new HttpResponseMessage();
-            HttpContext.Response.Cookies.Append(
-                "name", "value",
-                new CookieOptions() {SameSite = SameSiteMode.None});
-            //response.Headers.Add("Set-Cookie", $"AuthCookie={Guid.NewGuid()};HttpOnly;Secure;Path=/;SameSite=None");
+            response.Headers.Add("Set-Cookie", $"AuthCookie={Guid.NewGuid()};HttpOnly;Secure;Path=/;SameSite=lax");
             return response;
         }
     }
